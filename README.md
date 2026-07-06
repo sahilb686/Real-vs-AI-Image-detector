@@ -6,10 +6,6 @@ An image classification model that takes an image as an input, and predicts whet
 1. A Convolutional Neural Network (CNN) architecture was developed by our team
 2. An EfficientNet-based model architecture implemented by our team.
 
-
-
-
-
 ## Project Outline
 The goal of this project is to develop a deep learning model that can accurately distinguish between real images and AI-generated images. We will collect datasets of real images and fake images. The data will be preprocessed, normalized, and augmented to enhance training. Using TensorFlow and Keras, we will design a Convolutional Neural Network (CNN) for classification, and validating performance through a confusion matrix. Finally, the project will include documentation of the process, findings, and suggestions for future improvements.
 
