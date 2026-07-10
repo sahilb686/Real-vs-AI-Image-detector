@@ -1,7 +1,6 @@
 # imports
 import base64
 import os
-import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPooling2D, Flatten, Dense, Dropout
@@ -9,22 +8,6 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
 
-
-
-
-# load css
-def load_local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-load_local_css("./styles/style.css")
-
-
-# bootstrap
-st.markdown(
-    """<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">""",
-    unsafe_allow_html=True
-)
 
 # load model weights
 @st.cache_resource

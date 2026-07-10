@@ -1,0 +1,13 @@
+# Core API framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# ML / image processing (prediction logic unchanged)
+tensorflow==2.18.0
+numpy>=1.26.0,<2.1.0
+Pillow>=10.0.0
+
+# Production utilities
+pydantic==2.10.4
+pydantic-settings==2.7.0
