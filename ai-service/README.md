@@ -1,6 +1,6 @@
 # AI Image Authenticity Service
 
-Production-ready FastAPI microservice for detecting whether an image is **real** or **AI-generated**. Converted from the original Streamlit application with **zero changes** to prediction logic, preprocessing, or trained model weights.
+Production-ready FastAPI microservice for detecting whether an image is **real** or **AI-generated**. 
 
 Supports three classifiers:
 - **CNN** — custom convolutional neural network

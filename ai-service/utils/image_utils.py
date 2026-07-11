@@ -37,12 +37,26 @@ def validate_image_upload(file: UploadFile) -> None:
     extension = _normalize_extension(file.filename)
     content_type = (file.content_type or "").lower()
 
-    extension_valid = extension in ALLOWED_IMAGE_EXTENSIONS
-    mime_valid = content_type in ALLOWED_IMAGE_MIME_TYPES
-
-    if not extension_valid and not mime_valid:
+    # Require a valid file extension — only .jpg, .jpeg, and .png are accepted.
+    if extension not in ALLOWED_IMAGE_EXTENSIONS:
         logger.warning(
-            "Rejected upload: filename=%s content_type=%s",
+            "Rejected upload: filename=%s content_type=%s extension=%s",
+            file.filename,
+            file.content_type,
+            extension,
+        )
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Invalid file type. Only JPG, JPEG, and PNG images are accepted. "
+                f"Received extension='{extension}'."
+            ),
+        )
+
+    # Reject obvious MIME-type mismatches (e.g. .jpg uploaded as application/pdf).
+    if content_type and content_type not in ALLOWED_IMAGE_MIME_TYPES:
+        logger.warning(
+            "Rejected upload due to MIME mismatch: filename=%s content_type=%s",
             file.filename,
             file.content_type,
         )
@@ -50,7 +64,7 @@ def validate_image_upload(file: UploadFile) -> None:
             status_code=400,
             detail=(
                 "Invalid file type. Only JPG, JPEG, and PNG images are accepted. "
-                f"Received extension='{extension}' content_type='{content_type}'."
+                f"Received content_type='{content_type}'."
             ),
         )
 
